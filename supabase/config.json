@@ -1,0 +1,32 @@
+{
+  "name": "VR Lab Todo Sync Hub",
+  "description": "Centralized todo management system for YCCC VR Lab operations",
+  "version": "1.0.0",
+  "database": {
+    "host": "localhost",
+    "port": 5432,
+    "name": "todo_sync_hub",
+    "user": "postgres",
+    "ssl": false
+  },
+  "api": {
+    "port": 3000,
+    "cors": {
+      "origin": ["https://yccvrlab.github.io", "http://localhost:3000"]
+    }
+  },
+  "auth": {
+    "jwt_secret": "your-jwt-secret-here",
+    "jwt_expiry": 3600,
+    "enable_signup": false,
+    "enable_email_confirmations": true
+  },
+  "storage": {
+    "file_size_limit": "50MB",
+    "allowed_mime_types": ["image/*", "application/pdf", "text/*"]
+  },
+  "realtime": {
+    "enabled": true,
+    "max_connections": 100
+  }
+}

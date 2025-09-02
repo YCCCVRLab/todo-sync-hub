@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YCCC VR Lab - Todo Command Center</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            color: white;
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+        .header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        .dashboard {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+        }
+        .card h3 {
+            color: #4a5568;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+        .card ul {
+            list-style: none;
+        }
+        .card li {
+            padding: 8px 0;
+            border-bottom: 1px solid #f7fafc;
+        }
+        .card li:last-child {
+            border-bottom: none;
+        }
+        .priority-high {
+            border-left: 4px solid #e53e3e;
+        }
+        .priority-medium {
+            border-left: 4px solid #dd6b20;
+        }
+        .priority-low {
+            border-left: 4px solid #38a169;
+        }
+        .status {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+        .status.pending {
+            background: #fed7d7;
+            color: #c53030;
+        }
+        .status.progress {
+            background: #feebc8;
+            color: #c05621;
+        }
+        .status.completed {
+            background: #c6f6d5;
+            color: #2f855a;
+        }
+        .quick-actions {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        .btn {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #667eea;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            margin: 5px;
+            transition: background 0.3s ease;
+        }
+        .btn:hover {
+            background: #5a67d8;
+        }
+        .footer {
+            text-align: center;
+            color: white;
+            opacity: 0.8;
+            margin-top: 40px;
+        }
+        .integration-status {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        .integration {
+            flex: 1;
+            padding: 15px;
+            background: #f7fafc;
+            border-radius: 8px;
+            text-align: center;
+        }
+        .integration.active {
+            background: #c6f6d5;
+            color: #2f855a;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🥽 VR Lab Todo Command Center</h1>
+            <p>York County Community College - Room 112, Wells Campus</p>
+        </div>
+
+        <div class="quick-actions">
+            <h3>Quick Actions</h3>
+            <a href="https://github.com/YCCCVRLab/todo-sync-hub/blob/main/todos/equipment-purchases.md" class="btn">📦 Equipment Purchases</a>
+            <a href="https://github.com/YCCCVRLab/todo-sync-hub/blob/main/todos/lab-operations.md" class="btn">🔧 Lab Operations</a>
+            <a href="https://github.com/YCCCVRLab/todo-sync-hub/blob/main/todos/projects.md" class="btn">🚀 Projects</a>
+            <a href="https://github.com/YCCCVRLab/todo-sync-hub/blob/main/todos/administrative.md" class="btn">📋 Administrative</a>
+            <a href="https://github.com/YCCCVRLab/todo-sync-hub/issues/new/choose" class="btn">➕ New Task</a>
+        </div>
+
+        <div class="dashboard">
+            <div class="card priority-high">
+                <h3>🔥 High Priority</h3>
+                <ul>
+                    <li>Purchase 10 additional Meta Quest 3 headsets <span class="status pending">Pending</span></li>
+                    <li>VR Club launch planning <span class="status progress">In Progress</span></li>
+                    <li>Command center setup <span class="status pending">Pending</span></li>
+                </ul>
+            </div>
+
+            <div class="card priority-medium">
+                <h3>⚡ This Week</h3>
+                <ul>
+                    <li>Tuesday/Thursday class prep (11:00-12:15)</li>
+                    <li>Student demo preparations</li>
+                    <li>Equipment maintenance check</li>
+                    <li>Supabase MCP server setup</li>
+                </ul>
+            </div>
+
+            <div class="card priority-low">
+                <h3>📊 Lab Status</h3>
+                <ul>
+                    <li><strong>Hours:</strong> Mon-Fri, 8:00 AM - 4:30 PM</li>
+                    <li><strong>Office Hours:</strong> Mon-Thu until 5:30 PM</li>
+                    <li><strong>Location:</strong> Room 112, Wells Campus</li>
+                    <li><strong>Specialist:</strong> John C. Barr</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h3>🔗 Integrations</h3>
+                <div class="integration-status">
+                    <div class="integration active">
+                        <strong>GitHub</strong><br>
+                        <small>Connected</small>
+                    </div>
+                    <div class="integration active">
+                        <strong>Supabase MCP</strong><br>
+                        <small>Active</small>
+                    </div>
+                    <div class="integration">
+                        <strong>Atlassian</strong><br>
+                        <small>Configured</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Last updated: September 2, 2025 | <a href="https://github.com/YCCCVRLab/todo-sync-hub" style="color: white;">View on GitHub</a></p>
+        </div>
+    </div>
+
+    <script>
+        // Auto-refresh every 5 minutes
+        setTimeout(() => {
+            location.reload();
+        }, 300000);
+
+        // Add click tracking for analytics
+        document.querySelectorAll('.btn').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                console.log('Button clicked:', e.target.textContent);
+            });
+        });
+    </script>
+</body>
+</html>
