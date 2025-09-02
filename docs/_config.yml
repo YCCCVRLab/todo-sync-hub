@@ -1,0 +1,42 @@
+# GitHub Pages configuration for VR Lab Todo Sync Hub
+title: "YCCC VR Lab - Todo Command Center"
+description: "Centralized todo management system for YCCC VR Lab operations"
+baseurl: "/todo-sync-hub"
+url: "https://yccvrlab.github.io"
+
+# Build settings
+markdown: kramdown
+theme: minima
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+  - jekyll-seo-tag
+
+# Site settings
+author:
+  name: John C. Barr
+  email: john.barr@yccc.edu
+
+organization:
+  name: York County Community College
+  department: VR Lab
+  location: Room 112, Wells Campus
+
+# Navigation
+header_pages:
+  - equipment.md
+  - operations.md
+  - projects.md
+  - administrative.md
+
+# Exclude from processing
+exclude:
+  - Gemfile
+  - Gemfile.lock
+  - node_modules
+  - vendor/bundle/
+  - vendor/cache/
+  - vendor/gems/
+  - vendor/ruby/
+  - supabase/
+  - .github/
